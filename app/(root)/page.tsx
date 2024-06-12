@@ -1,11 +1,21 @@
 import HeaderBox from '@/components/HeaderBox'
 import RightSidebar from '@/components/RightSidebar'
 import TotalBalanceBox from '@/components/TotalBalanceBox'
+import { getLoggedInUser } from '@/lib/actions/user.actions'
 import React from 'react'
 
-const Home = () => {
+const Home = async () => {
 
-    const loggedIn = { firstName: 'Umar', lastName: 'Faruq', email: 'faruq@gmail.com' }
+    const loggedIn = await getLoggedInUser()
+    // const loggedIn = { firstName: 'Umar', lastName: 'Faruq', email: 'faruq@gmail.com' }
+
+    
+    // const loggedIn = await getLoggedInUser()
+    console.log('In Root', await getLoggedInUser())
+    // console.log('In Root---------------',process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT)
+    // console.log(process.env.NEXT_PUBLIC_APPWRITE_PROJECT)
+    // console.log(process.env.NEXT_APPWRITE_KEY)
+
 
   return (
     <section className='home'>
@@ -14,7 +24,7 @@ const Home = () => {
                 <HeaderBox 
                     type='greeting'
                     title='Welcome'
-                    user={loggedIn?.firstName || 'Guest'}
+                    user={loggedIn?.name || 'Guest'}
                     subtext='Access and manage your account and transactions efficiently.'
                 />
 
