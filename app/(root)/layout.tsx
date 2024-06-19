@@ -14,7 +14,7 @@ export default async function RootLayout({
     const loggedIn = await getLoggedInUser()
 
     if(!loggedIn) redirect('/sign-in')
-    console.log('------------- In Rooute layout', loggedIn)
+    // console.log('------------- In Rooute layout', loggedIn)
 
   return (
     <main className="flex h-screen w-full font-inter">
